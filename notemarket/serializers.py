@@ -1,12 +1,11 @@
 from rest_framework import serializers
-from .models import Produtos
+from .models import Inventario
 
 
-class ProdutosSerializer(serializers.ModelSerializer):
+class InventarioSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Produtos
-        db_name = 'produtos'
+        model = Inventario
         # fields = '__all__'
         fields = [
             'id',

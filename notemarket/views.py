@@ -1,14 +1,19 @@
 from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import ProdutosSerializer
-from .models import Produtos
-
-
-class ProdutosList(generics.ListCreateAPIView):
-    queryset = Produtos.objects.all()
-    serializer_class = ProdutosSerializer
+from .serializers import InventarioSerializer
+from .models import Inventario
 
 
-class ProdutosDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Produtos.objects.all()
-    serializer_class = ProdutosSerializer
+class InventarioList(generics.ListCreateAPIView):
+    queryset = Inventario.objects.all()
+    serializer_class = InventarioSerializer
+    filter_backends = [DjangoFilterBackend, ]
+    search_fields = [
+        'descricao',
+    ]
+
+
+class InventarioDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Inventario.objects.all()
+    serializer_class = InventarioSerializer
